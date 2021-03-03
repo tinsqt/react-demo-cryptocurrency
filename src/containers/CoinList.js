@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import _ from "lodash";
 import {getCoinList} from "../actions/CoinActions";
 import ReactPaginate from "react-paginate";
+import {Link} from "react-router-dom";
 
 const CoinList = (props) => {
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const CoinList = (props) => {
             return(
                 <tr key={coin.id} className="Tbody-tr">
                   <td>{coin.id}</td>
-                  <td><p>{coin.name} {coin.symbol}</p></td>
+                  <td><Link to={`/coin/${coin.id}`}><p>{coin.name} {coin.symbol}</p></Link></td>
                   <td>${changeValueToPercent(coin.quote.USD.price)}</td>
                   {checkValue(coin.quote.USD.percent_change_24h)
                       ? <td style={green}>{changeValueToPercent(coin.quote.USD.percent_change_24h)}</td>
